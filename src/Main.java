@@ -62,11 +62,11 @@ public class Main {
     }
 
     static void test_3(){
-        System.out.println("TEST 3:");
         int[] v1 = {1, 2, 3, 4, 5};
         int[] v2 = {4, 3, 2};
         int[] v3 = {6, 7, 8, 9};
         int[] v4 = {9};
+        System.out.println("TEST 3:");
         System.out.print("Before: ");
         displayArray(v1);
         System.out.print("\nAfter: ");
@@ -93,12 +93,42 @@ public class Main {
  * Dado {2, 3, 4} a função deve devolver 24.
  */
 
-//    static int product(int[] vec){ CONTINUE HERE...
-//    }
+    static int productVecElems(int[] v){
+        if (v.length == 0)
+            return 1;
+        return productVecElems(removeFirst(v)) * v[0];
+    }
+
+    static void test_4(){
+        int[] v1 = {4, 3, 2};
+        int[] v2 = {1, 2, 3};
+        int[] v3 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+        System.out.println("\nTEST 4:");
+        System.out.print("Product of ");
+        displayArray(v1);
+        System.out.println("is: " + productVecElems(v1));
+        System.out.print("Product of ");
+        displayArray(v2);
+        System.out.println("is: " + productVecElems(v2));
+        System.out.print("Product of ");
+        displayArray(v3);
+        System.out.println("is: " + productVecElems(v3));
+    }
+/*
+ * Desenvolva uma função que recebe um carácter e um vector de
+ * caracteres e devolve o tamanho da maior sequência desse carácter.
+ * Caso não exista deve devolver zero.
+ * Dado ‘0’ e {'a', '2'} a função deve devolver 0.
+ * Dado ‘0’ e {'0', '0', 'b', '3', '7'} a função deve devolver 2.
+ * Dado ‘0’ e {'c', '3', ‘0’, ‘0,’ 'a', '1', ’0’, ‘0’, ‘0’} a função deve devolver 3.
+ * Dado ‘0’ e {‘0’} a função deve devolver 1.
+ */
+    //static int sizeLongestSequence(char c, char[] vec){
 
     public static void main(String[] args){
         test_1();
         test_2();
         test_3();
+        test_4();
     }
 }
