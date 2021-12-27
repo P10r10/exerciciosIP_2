@@ -4,9 +4,16 @@ public class Main {
  * Auxiliary
  */
 
-    static void displayArray(int[] v){
+    static void displayArrayInt(int[] v){
         for (int i = 0; i < v.length; i++)
             System.out.print(v[i] + " ");
+    }
+
+    static void displayArrayChar(char[] v){
+        if (v.length != 0)
+            System.out.print("{");
+        for (int i = 0; i < v.length; i++)
+            System.out.print("'" + v[i] + (i == v.length - 1 ? "'}" : "', "));
     }
 
 /*
@@ -68,21 +75,21 @@ public class Main {
         int[] v4 = {9};
         System.out.println("TEST 3:");
         System.out.print("Before: ");
-        displayArray(v1);
+        displayArrayInt(v1);
         System.out.print("\nAfter: ");
-        displayArray(removeFirst(v1));
+        displayArrayInt(removeFirst(v1));
         System.out.print("\nBefore: ");
-        displayArray(v2);
+        displayArrayInt(v2);
         System.out.print("\nAfter: ");
-        displayArray(removeFirst(v2));
+        displayArrayInt(removeFirst(v2));
         System.out.print("\nBefore: ");
-        displayArray(v3);
+        displayArrayInt(v3);
         System.out.print("\nAfter: ");
-        displayArray(removeFirst(v3));
+        displayArrayInt(removeFirst(v3));
         System.out.print("\nBefore: ");
-        displayArray(v4);
+        displayArrayInt(v4);
         System.out.print("\nAfter: ");
-        displayArray(removeFirst(v4));
+        displayArrayInt(removeFirst(v4));
         System.out.println();
     }
 
@@ -105,13 +112,13 @@ public class Main {
         int[] v3 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
         System.out.println("\nTEST 4:");
         System.out.print("Product of ");
-        displayArray(v1);
+        displayArrayInt(v1);
         System.out.println("is: " + productVecElems(v1));
         System.out.print("Product of ");
-        displayArray(v2);
+        displayArrayInt(v2);
         System.out.println("is: " + productVecElems(v2));
         System.out.print("Product of ");
-        displayArray(v3);
+        displayArrayInt(v3);
         System.out.println("is: " + productVecElems(v3));
     }
 /*
@@ -123,12 +130,46 @@ public class Main {
  * Dado ‘0’ e {'c', '3', ‘0’, ‘0,’ 'a', '1', ’0’, ‘0’, ‘0’} a função deve devolver 3.
  * Dado ‘0’ e {‘0’} a função deve devolver 1.
  */
-    //static int sizeLongestSequence(char c, char[] vec){
+    @SuppressWarnings("SameParameterValue")
+    static int sizeLongestSequence(char c, char[] v){
+        int count = 0, longest = 0;
+        for (int i = 0; i < v.length; i++)
+            if (v[i] == c){
+                count++;
+                if (count > longest)
+                    longest = count;
+            }
+            else
+                count = 0;
+        return longest;
+    }
+
+    static void test_5(){
+        char[] v1 = {'a', '2'};
+        char[] v2 = {'0', '0', 'b', '3', '7'};
+        char[] v3 = {'c', '3', '0', '0', 'a', '1', '0', '0', '0'};
+        char[] v4 = {'0'};
+        System.out.println("\nTEST 5:");
+        System.out.print("Longest sequence of '0' in ");
+        displayArrayChar(v1);
+        System.out.println(": " + sizeLongestSequence('0', v1));
+        System.out.print("Longest sequence of '0' in ");
+        displayArrayChar(v2);
+        System.out.println(": " + sizeLongestSequence('0', v2));
+        System.out.print("Longest sequence of '0' in ");
+        displayArrayChar(v3);
+        System.out.println(": " + sizeLongestSequence('0', v3));
+        System.out.print("Longest sequence of '0' in ");
+        displayArrayChar(v4);
+        System.out.println(": " + sizeLongestSequence('0', v4));
+
+    }
 
     public static void main(String[] args){
         test_1();
         test_2();
         test_3();
         test_4();
+        test_5();
     }
 }
