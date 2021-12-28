@@ -7,6 +7,12 @@ public class Main {
     static void displayArrayInt(int[] v){
         for (int i = 0; i < v.length; i++)
             System.out.print(v[i] + " ");
+        System.out.println();
+    }
+
+    static void displayMatrixInt(int[][] m){
+        for (int i = 0; i < m.length; i++)
+            displayArrayInt(m[i]);
     }
 
     static void displayArrayChar(char[] v){
@@ -76,19 +82,19 @@ public class Main {
         System.out.println("TEST 3:");
         System.out.print("Before: ");
         displayArrayInt(v1);
-        System.out.print("\nAfter: ");
+        System.out.print("After: ");
         displayArrayInt(removeFirst(v1));
-        System.out.print("\nBefore: ");
+        System.out.print("Before: ");
         displayArrayInt(v2);
-        System.out.print("\nAfter: ");
+        System.out.print("After: ");
         displayArrayInt(removeFirst(v2));
-        System.out.print("\nBefore: ");
+        System.out.print("Before: ");
         displayArrayInt(v3);
-        System.out.print("\nAfter: ");
+        System.out.print("After: ");
         displayArrayInt(removeFirst(v3));
-        System.out.print("\nBefore: ");
+        System.out.print("Before: ");
         displayArrayInt(v4);
-        System.out.print("\nAfter: ");
+        System.out.print("After: ");
         displayArrayInt(removeFirst(v4));
         System.out.println();
     }
@@ -110,7 +116,7 @@ public class Main {
         int[] v1 = {4, 3, 2};
         int[] v2 = {1, 2, 3};
         int[] v3 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
-        System.out.println("\nTEST 4:");
+        System.out.println("TEST 4:");
         System.out.print("Product of ");
         displayArrayInt(v1);
         System.out.println("is: " + productVecElems(v1));
@@ -130,7 +136,6 @@ public class Main {
  * Dado ‘0’ e {'c', '3', ‘0’, ‘0,’ 'a', '1', ’0’, ‘0’, ‘0’} a função deve devolver 3.
  * Dado ‘0’ e {‘0’} a função deve devolver 1.
  */
-    @SuppressWarnings("SameParameterValue")
     static int sizeLongestSequence(char c, char[] v){
         int count = 0, longest = 0;
         for (int i = 0; i < v.length; i++)
@@ -162,7 +167,37 @@ public class Main {
         System.out.print("Longest sequence of '0' in ");
         displayArrayChar(v4);
         System.out.println(": " + sizeLongestSequence('0', v4));
+    }
 
+/*
+ * Desenvolva um procedimento que dada uma matriz de inteiros quadrada
+ * coloque a 1 os elementos da diagonal secundária.
+ */
+    static void secondaryDiagonal(int[][] m){
+        for (int i = 0; i < m.length; i++)
+            for (int j = 0; j < m.length; j++)
+                if (j == m.length - 1 - i)
+                    m[i][j] = 1;
+    }
+
+    static void test_6(){
+        System.out.println("\nTEST 6:");
+        System.out.println("Before: ");
+        int[][]m = {{1, 2, 3},
+                    {4, 5, 6},
+                    {7, 8, 9}};
+        displayMatrixInt(m);
+        System.out.println("After: ");
+        secondaryDiagonal(m);
+        displayMatrixInt(m);
+        int[][]m2 = {{1, 2, 3, 4},
+                    {5, 6, 7, 8},
+                    {9, 0, 1, 2},
+                    {3, 4, 5, 6}};
+        displayMatrixInt(m2);
+        System.out.println("After: ");
+        secondaryDiagonal(m2);
+        displayMatrixInt(m2);
     }
 
     public static void main(String[] args){
@@ -171,5 +206,6 @@ public class Main {
         test_3();
         test_4();
         test_5();
+        test_6();
     }
 }
