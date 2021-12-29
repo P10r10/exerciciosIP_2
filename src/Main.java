@@ -199,13 +199,38 @@ public class Main {
         secondaryDiagonal(m2);
         displayMatrixInt(m2);
     }
+/* Desenvolva uma função que devolve o mínimo múltiplo comum entre
+ * dois números naturais. O mínimo múltiplo comum entre dois números
+ * naturais é o primeiro número natural que é divisível pelos dois números.
+ * lcm(3, 2) ➝ 6
+ * lcm(3, 6) ➝ 6
+ * lcm(21, 9) ➝ 63
+ */
+    static int lcm(int a, int b){
+        int res = a * b;
+        for (int i = res; i >= Math.max(a, b); i--){
+            if (i % a == 0 && i % b == 0)
+                res = i;
+        }
+        return res;
+    }
+
+    static void test_7(){
+        System.out.println("\nTEST 7:");
+        System.out.println("lcm(3, 2): " + lcm(3, 2));
+        System.out.println("lcm(3, 6): " + lcm(3, 6));
+        System.out.println("lcm(21, 9): " + lcm(21, 9));
+        System.out.println("lcm(458, 650): " + lcm(458, 650));
+        System.out.println("lcm(116, 58): " + lcm(116, 58));
+    }
 
     public static void main(String[] args){
-        test_1();
-        test_2();
-        test_3();
-        test_4();
-        test_5();
-        test_6();
+//        test_1();
+//        test_2();
+//        test_3();
+//        test_4();
+//        test_5();
+//        test_6();
+        test_7();
     }
 }
