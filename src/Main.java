@@ -224,6 +224,29 @@ public class Main {
         System.out.println("lcm(116, 58): " + lcm(116, 58));
     }
 
+    static int binaryToDecimal(int[] vec){
+        int res = 0;
+        for (int i = vec.length - 1; i >= 0 ; i--)
+            res += vec[i] * Math.pow(2, vec.length - 1 - i);
+        return res;
+    }
+
+    static void test_8(){
+        System.out.println("\nTEST 8:");
+        int[] v1 = {1, 1, 0, 0};
+        int[] v2 = {1, 0, 0, 0};
+        int[] v3 = {0, 1, 1, 1};
+        int[] v4 = {1, 1, 1, 1};
+        int[] v5 = {1, 0, 0, 0, 0};
+        int[] v6 = {1, 1, 1, 1, 1, 1, 1, 1};
+        System.out.println("Binary 1100 = " + binaryToDecimal(v1));
+        System.out.println("Binary 1000 = " + binaryToDecimal(v2));
+        System.out.println("Binary 0111 = " + binaryToDecimal(v3));
+        System.out.println("Binary 1111 = " + binaryToDecimal(v4));
+        System.out.println("Binary 10000 = " + binaryToDecimal(v5));
+        System.out.println("Binary 11111111 = " + binaryToDecimal(v6));
+    }
+
     public static void main(String[] args){
 //        test_1();
 //        test_2();
@@ -231,6 +254,7 @@ public class Main {
 //        test_4();
 //        test_5();
 //        test_6();
-        test_7();
+//        test_7();
+        test_8();
     }
 }
