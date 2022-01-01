@@ -275,6 +275,20 @@ public class Main {
                             img.setColor(x, y, tones[i]);
     }
 
+    static void grid(ColorImage img, int lines, int columns){
+        int vstep = img.getHeight() / (lines + 1);
+        int hstep = img.getWidth() / (columns + 1);
+        Color black = new Color(0, 0, 0);
+        for (int i = 0; i < lines; i++)
+            for (int x = 0; x < img.getWidth(); x++)
+                if (x % 2 == 0)
+                    img.setColor(x, vstep * (i + 1), black);
+        for (int i = 0; i < columns; i++)
+            for (int y = 0; y < img.getHeight(); y++)
+                if (y % 2 == 0)
+                    img.setColor(hstep * (i + 1), y, black);
+    }
+
     public static void main(String[] args){
         test_9();
     }
