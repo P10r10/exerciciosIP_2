@@ -32,4 +32,15 @@ public class Filter {
                     res.setColor(x, y, img.getColor(x, y));
         return res;
     }
+
+    boolean hasChanges(ColorImage img){
+        ColorImage res = applyFilter(img);
+        for (int x = 0; x < img.getWidth(); x++)
+            for (int y = 0; y < img.getHeight(); y++)
+                if (img.getColor(x, y).getR() != res.getColor(x, y).getR() &&
+                    img.getColor(x, y).getG() != res.getColor(x, y).getG() &&
+                    img.getColor(x, y).getB() != res.getColor(x, y).getB())
+                        return true;
+        return false;
+    }
 }
