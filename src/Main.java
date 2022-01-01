@@ -263,11 +263,19 @@ public class Main {
         System.out.println("\nTEST 9:");
         for (int i = 0; i < myGray.length; i++)
             System.out.print(i + ": " + myGray[i].getR() + " ");
+    }
 
+    static void frame(ColorImage img, Color gray, int thickness){
+        Color[] tones = grayTones(gray, thickness);
+            for (int i = 0; i < thickness; i++)
+                for (int x = i; x < img.getWidth() - i; x++)
+                    for (int y = i; y < img.getHeight() - i; y++)
+                        if (x == i || x == img.getWidth() - 1 - i
+                        || y == i || y == img.getHeight() - 1 - i)
+                            img.setColor(x, y, tones[i]);
     }
 
     public static void main(String[] args){
-
         test_9();
     }
 }
