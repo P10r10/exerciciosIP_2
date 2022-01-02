@@ -9,4 +9,10 @@ public class ImageCollection {
         images[next++] = img;
         this.filter = filter;
     }
+
+    void insertImage (ColorImage img){
+        if (next == MAX)
+            throw new IllegalStateException("Collection full!");
+        images[next++] = img;
+    }
 }
