@@ -26,4 +26,17 @@ public class ImageCollection {
         images[idx] = images[next - 1];
         next--;
     }
+
+    void filterInRange(int a, int b){
+        if (a < 0 || b >= MAX || b < 0 || a > b)
+            throw new IllegalArgumentException("Invalid range values!");
+        for (int i = a; i <= b ; i++)
+            images[i] = filter.applyFilter(images[i]);
+    }
+
+    void gridImage(int idx){
+        if (idx >= MAX || idx < 0)
+            throw new IllegalArgumentException("Invalid index!");
+        Main.grid(images[idx], 2, 2);
+    }
 }
