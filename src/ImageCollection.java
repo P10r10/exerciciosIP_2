@@ -13,6 +13,17 @@ public class ImageCollection {
     void insertImage (ColorImage img){
         if (next == MAX)
             throw new IllegalStateException("Collection full!");
+        if (img == null)
+            throw new NullPointerException("Null pointer in method insertImage");
         images[next++] = img;
+    }
+
+    void removeImage (int idx){
+        if (idx >= MAX || idx < 0)
+            throw new IllegalArgumentException("Image index is invalid!");
+        if (next == 0)
+            throw new IllegalStateException("Collection is empty!");
+        images[idx] = images[next - 1];
+        next--;
     }
 }
