@@ -19,23 +19,21 @@ public class ImageCollection {
     }
 
     void removeImage (int idx){
-        if (idx >= MAX || idx < 0)
+        if (idx >= next || idx < 0)
             throw new IllegalArgumentException("Image index is invalid!");
-        if (next == 0)
-            throw new IllegalStateException("Collection is empty!");
         images[idx] = images[next - 1];
         next--;
     }
 
     void filterInRange(int a, int b){
-        if (a < 0 || b >= MAX || b < 0 || a > b)
+        if (a < 0 || b >= next || b < 0 || a > b)
             throw new IllegalArgumentException("Invalid range values!");
         for (int i = a; i <= b ; i++)
             images[i] = filter.applyFilter(images[i]);
     }
 
     void gridImage(int idx){
-        if (idx >= MAX || idx < 0)
+        if (idx >= next || idx < 0)
             throw new IllegalArgumentException("Invalid index!");
         Main.grid(images[idx], 2, 2);
     }
